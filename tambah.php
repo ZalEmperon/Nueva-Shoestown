@@ -17,7 +17,7 @@ if(!isset($_POST['sepatuadd'])){
   $pathfile = './shoesimg/'.$gambarbaru;
   $pindah = move_uploaded_file($sumber, $pathfile);
 
-  $query = "INSERT INTO sepatu (nama_sepatu, harga, warna, gambar, deskripsi) VALUES ('$nama_sepatu', '$harga', '$warna', '$gambarbaru','$deskripsi');";
+  $query = "INSERT INTO sepatu (nama_sepatu, harga, warna, gambar, deskripsi, link) VALUES ('$nama_sepatu', '$harga', '$warna', '$gambarbaru','$deskripsi','https://wa.me/085747336294?text=Saya%20Tertarik%20untuk%20Membeli%20Sepatu');";
   mysqli_query($conn,$query);
 ?>
 ! 

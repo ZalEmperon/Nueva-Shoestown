@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 16 Nov 2021 pada 09.03
--- Versi server: 10.4.10-MariaDB
--- Versi PHP: 7.3.12
+-- Host: localhost:3306
+-- Waktu pembuatan: 25 Feb 2022 pada 03.00
+-- Versi server: 10.5.12-MariaDB
+-- Versi PHP: 7.3.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,32 +19,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `perpus`
+-- Database: `id18361528_shoestown`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `buku`
+-- Struktur dari tabel `sepatu`
 --
 
-CREATE TABLE `buku` (
-  `id_buku` int(5) NOT NULL,
-  `judul` varchar(60) NOT NULL,
-  `pengarang` varchar(60) NOT NULL,
-  `penerbit` varchar(60) NOT NULL,
+CREATE TABLE `sepatu` (
+  `id_sepatu` int(5) NOT NULL,
+  `nama_sepatu` varchar(60) NOT NULL,
+  `harga` varchar(60) NOT NULL,
+  `warna` varchar(60) NOT NULL,
   `gambar` varchar(100) NOT NULL,
-  `genre` varchar(60) NOT NULL
+  `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `buku`
+-- Dumping data untuk tabel `sepatu`
 --
 
-INSERT INTO `buku` (`id_buku`, `judul`, `pengarang`, `penerbit`, `gambar`, `genre`) VALUES
-(70, 'Tenggelamnya Kapal van der Wijck', 'Hamka', 'Nusantara', 'Tenggelamnya Kapal van der Wijck-15112021060106.jpg', 'Bildungsroman; Fiksi petualangan; Fantasi'),
-(73, 'Bumi Earth', 'Hidalgo', 'Nusantara ', 'Bumi-15112021114017.jpg', 'Bildungsroman; Fiksi petualangan; Fantasi'),
-(74, 'Iglesiera', 'abid', 'Gramedia', 'Iglesiera-16112021050912.jpg', 'Bildungsroman; Fiksi petualangan; Fantasi');
+INSERT INTO `sepatu` (`id_sepatu`, `nama_sepatu`, `harga`, `warna`, `gambar`, `deskripsi`) VALUES
+(76, 'Adios Redrunner', '300000', 'Merah/Hitam', 'Adios Redrunner-19112021021102.png', 'Pria\r\n'),
+(77, 'Blak Silent', '300000', 'Merah/Hitamm', 'Blak Silent-24112021035308.png', 'Wanita');
 
 -- --------------------------------------------------------
 
@@ -70,17 +69,18 @@ INSERT INTO `sessions` (`id`, `email`, `username`, `password`, `status`) VALUES
 (3, 'laverdad@gmail.mx', 'Seranos', 'verdad', 'User'),
 (4, 'boldgar99@gmail.jp', 'Edgar', 'eternal', 'User'),
 (5, 'bruh@gmail.com', 'Bruh', 'bruh', 'User'),
-(6, 'bimaadi@gmail.com', 'Bima', 'bima1', 'User');
+(6, 'bimaadi@gmail.com', 'Bima', 'bima1', 'User'),
+(7, 'Dena@gmail.com', 'fader', 'fader', 'User');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `buku`
+-- Indeks untuk tabel `sepatu`
 --
-ALTER TABLE `buku`
-  ADD PRIMARY KEY (`id_buku`);
+ALTER TABLE `sepatu`
+  ADD PRIMARY KEY (`id_sepatu`);
 
 --
 -- Indeks untuk tabel `sessions`
@@ -93,16 +93,16 @@ ALTER TABLE `sessions`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `buku`
+-- AUTO_INCREMENT untuk tabel `sepatu`
 --
-ALTER TABLE `buku`
-  MODIFY `id_buku` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+ALTER TABLE `sepatu`
+  MODIFY `id_sepatu` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT untuk tabel `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

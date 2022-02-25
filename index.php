@@ -30,7 +30,7 @@ session_start();
   <!--HEADER / NAVBAR-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-lg">
     <div class="container">
-      <a class="navbar-brand" href="index.html" class="fw-bolder"><img src="assets/img/icon.svg" height="50" width="50"><span class="mx-2 fw-bold h4 align-middle">SHOESTOWN</span></a>
+      <a class="navbar-brand" href="index.php" class="fw-bolder"><img src="assets/img/icon.svg" height="50" width="50"><span class="mx-2 fw-bold h4 align-middle">SHOESTOWN</span></a>
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,7 +43,7 @@ session_start();
           <li class="nav-item dropdown">
             <!--SUDAH LOGIN-->
             <?php if (isset($_SESSION['username'])) { ?>
-              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle text-dark mx-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <?php echo $_SESSION['username']; ?> - <?php echo $_SESSION['status']; ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -149,7 +149,7 @@ session_start();
   <div class="p-5 mb-4" style="background-image:url('assets/img/bekpatu.jpg'); height: 90vh;">
     <div class="container-fluid py-5">
       <h1 class="display-6 fw-bold text-light text-end shadow-texts">PILIH SEPATU KESUKAANMU</h1>
-      <p class="col-md fs-6 text-light text-end shadow-texts">Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p class="col-md fs-6 text-light text-end shadow-texts">Pusat Sepatu Terbaik dan menyediakan beragam sepatu.<br>Kami juga menyediakan sepatu dengan beragam jenis dan terbaru</p>
     </div>
   </div>
 
@@ -199,11 +199,11 @@ session_start();
         </div>
         <div class="col-sm-3 my-2 text-white">
           <h6 class="text-light">Contact Us</h6>
-          <p class="small-F p">0123 456 7890</p>
+          <p class="small-F p">0857 4733 6294</p>
           <p class="small-F p">gregetbanget99@gmail.com</p>
           <p class="small-F p">Jalan monas -Jakarta</p>
         </div>
-        <p class="text-center my-3 text-secondary small-F">Copyright© 2021 - Sus. All Right Reserved</p>
+        <p class="text-center my-3 text-secondary small-F">Copyright© 2021 - Shoestown. All Right Reserved</p>
       </div>
     </div>
   </footer>

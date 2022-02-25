@@ -17,18 +17,20 @@ if (isset($_POST["id_sepatu"])) {
           </div>
           <h5 class="mt-2 ms-2" style="font-size: 20px!important;"><b>Warna :</b><?php echo $hasil['warna']; ?></h5>
           <h5 class="mt-2 ms-2" style="font-size: 20px!important;"><b>Harga : </b>Rp.<?php echo $hasil['harga']; ?></h5>
-          <h5 class="mt-2 ms-2" style="font-size: 20px!important;"><b>Deskripsi : </b><?php echo $hasil['deskripsi']; ?></h5>
+          <h5 class="mt-2 ms-2" style="font-size: 20px!important;"><b>Jenis : </b><?php echo $hasil['deskripsi']; ?></h5>
         </div>
       </div>
     </div>
     <div class="modal-footer">
       <div class="container">
         <div class="d-flex flex-wrap justify-content-between align-items-center">
-          <?php if (!isset($_SESSION['username']) || $_SESSION['status'] != "Admin") { ?>
+          <?php if (!isset($_SESSION['username'])) { ?>
             <br>
-            <?php }else{?>
+              <?php }elseif ($_SESSION['status'] == "User") { ?>
+            <a type="button" class="btn btn-warning mx-2 mb-2 bayarsepatu" data-bs-toggle="modal" data-bs-target="#modalBayar" id="<?php echo $hasil['id_sepatu']; ?>">Beli</a>
+            <?php }elseif ($_SESSION['status'] == "Admin"){?>
               <button class="btn btn-warning mx-2 mb-2 editsepatu" data-bs-toggle="modal" data-bs-target="#modalEdit" id="<?php echo $hasil['id_sepatu']; ?>">Edit</button>
-            <a class="btn btn-danger mx-2 mb-2 hapussepatu" id="<?php echo $hasil['id_sepatu']; ?>" href="javascript:void(0)">Hapus</a>
+              <a class="btn btn-danger mx-2 mb-2 hapussepatu" id="<?php echo $hasil['id_sepatu']; ?>" href="javascript:void(0)">Hapus</a>
           <?php } ?>
           <button type="button" class="btn btn-primary mx-2 mb-2" data-bs-dismiss="modal">Tutup</button>
         </div>
@@ -82,6 +84,25 @@ if (isset($_POST["id_sepatu"])) {
               $('#deskripsiedit').val(data.deskripsi);
               $('#edit').val("Update");
               $('#modalEdit').modal('show');
+            }
+          });
+        });
+
+        //AMBIL DATA Beli
+        $('.bayarsepatu').click(function() {
+          var id_sepatu = $(this).attr("id");
+          $.ajax({
+            url: "ambildata_update.php",
+            method: "POST",
+            data: {
+              id_sepatu: id_sepatu
+            },
+            dataType: "json",
+            success: function(data) {
+              $('#id').val(data.id_sepatu);
+              $('#productbeli').val(data.nama_sepatu);
+              $('#edit').val("Update");
+              $('#modalBayar').modal('show');
             }
           });
         });

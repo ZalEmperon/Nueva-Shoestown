@@ -17,6 +17,7 @@ session_start();
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
@@ -36,7 +37,7 @@ session_start();
   <!--HEADER / NAVBAR-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-lg">
     <div class="container">
-      <a class="navbar-brand" href="index.html" class="fw-bolder"><img src="assets/img/icon.svg" height="50" width="50"><span class="mx-2 fw-bold h4 align-middle">SHOESTOWN</span></a>
+      <a class="navbar-brand" href="index.php" class="fw-bolder"><img src="assets/img/icon.svg" height="50" width="50"><span class="mx-2 fw-bold h4 align-middle">SHOESTOWN</span></a>
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -74,7 +75,12 @@ session_start();
   <!--SEPATU & SEARCH-->
   <div class="container pt-3">
     <h1 class="fw-bold display-5 mb-3" id="Sepatu">Sepatu-Sepatu</h1>
-    <p class="fw-bold h3">Cari Sepatu</p>
+    <p class="fw-bold h3">Cari Sepatu
+      <?php if (isset($_GET['search'])) {
+        echo $_GET['search'];
+      } else {
+        echo '';
+      } ?></p>
     <form class="d-flex mb-4" action="" method="POST">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
     </form>
@@ -89,7 +95,7 @@ session_start();
       if (isset($_GET['search'])) {
         $search = $_GET['search'];
         $hasil = mysqli_query($conn, "SELECT * FROM sepatu WHERE deskripsi like '%" . $search . "%'");
-      }else{
+      } else {
         $hasil = mysqli_query($conn, "SELECT * FROM sepatu ORDER BY id_sepatu ASC");
       }
       while ($value = mysqli_fetch_assoc($hasil)) : ?>
@@ -110,7 +116,7 @@ session_start();
           <img src="assets/img/icon.svg" height="60" width="60">
         </div><br>
         <div class="col-sm-5 my-2" style="border-right: 1px solid #858585;">
-          <p class="text-light small-F text-justify" style="text-align:justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley and scrambled it to make a type specimen book.</p>
+          <p class="text-light small-F text-justify" style="text-align:justify;">Shoestown adalah perusahaan yang berbasis di Indonesia yang bergerak dalam industri pembuatan dan retail sepatu. Perusahaan ini memproduksi serangkaian sepatu yang terdiri atas sepatu kulit, sepatu kanvas, sepatu santai, dan sepatu olahraga.</p>
         </div>
         <div class="col-sm-3 my-2" style="border-right: 1px solid #858585;">
           <h6 class="text-light">Social Media</h6>
@@ -291,7 +297,71 @@ session_start();
     <div class="modal fade" id="modalDetail" tabindex="-1">
       <div class="modal-dialog modal-lg">
         <div class="modal-content" id="data-sepatu">
+        </div>
+      </div>
+    </div>
 
+    <!--MODAL PEMBAYARAN-->
+    <div class="modal fade" id="modalBayar" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <!--FORM PEMBAYARAN-->
+            <div class="container">
+              <h4>Form Order Sepatu</h4>
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  Checkout Ke WhatsApp
+                </div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="name" class="form-control" placeholder="Nama" id="namebeli">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Email" id="emailbeli">
+                  </div>
+                  <div class="form-group">
+                    <label>Nomor Kontak / WhatsApp</label>
+                    <input type="text" name="phone" class="form-control" placeholder="Nomor Kontak / WhatsApp" id="phonebeli">
+                  </div>
+                  <div class="form-group">
+                    <label>Pilih Produk</label>
+                    <input type="text" name="sepatu" class="form-control" placeholder="Nomor Kontak / WhatsApp" id="productbeli" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label>Pilih Ukuran</label>
+                    <select class="form-select" aria-label="Default select example" id="ukuranbeli">
+                      <option selected>-- Pilih Ukuran Sepatu --</option>
+                      <option value="38">38</option>
+                      <option value="39">39</option>
+                      <option value="40">40</option>
+                      <option value="41">41</option>
+                      <option value="42">42</option>
+                      <option value="43">43</option>
+                      <option value="44">44</option>
+                      <option value="45">45</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Catatan</label>
+                    <textarea name="description" class="form-control" rows="3" id="descriptionbeli"></textarea>
+                  </div><br>
+                  <div class="form-group">
+                    <button class="btn btn-success send"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</button>
+                  </div>
+                  <div id="text-info"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
@@ -496,6 +566,45 @@ session_start();
               location.reload();
             }
           });
+        }
+      });
+
+      //PESANAN
+      $('.send').click(function() {
+        /* Inputan Formulir */
+        var input_name = $("#namebeli").val();
+        var input_email = $("#emailbeli").val();
+        var input_phone = $("#phonebeli").val();
+        var input_product = $("#productbeli").val();
+        var input_ukuran = $("#ukuranbeli").val();
+        var input_description = $("#descriptionbeli").val();
+
+        /* Pengaturan Whatsapp */
+        var walink = 'https://web.whatsapp.com/send',
+          phone = '6285747336294',
+          text = 'Halo saya ingin memesan ' + input_product,
+          text_yes = 'Pesanan Anda berhasil terkirim.',
+          text_no = 'Isilah formulir terlebih dahulu.';
+
+        /* Smartphone Support */
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          var walink = 'whatsapp://send';
+        }
+
+        if (input_name != "" && input_phone != "" && input_product != "") {
+          /* Whatsapp URL */
+          var checkout_whatsapp = walink + '?phone=' + phone + '&text=' + text + '%0A%0A' +
+            '*Nama* : ' + input_name + '%0A' +
+            '*Alamat Email* : ' + input_email + '%0A' +
+            '*Nomor Kontak / Whatsapp* : ' + input_phone + '%0A' +
+            '*Ukuran Sepatu* : ' + input_ukuran + '%0A' +
+            '*Catatan* : ' + input_description + '%0A';
+
+          /* Whatsapp Window Open */
+          window.open(checkout_whatsapp, '_blank');
+          document.getElementById("text-info").innerHTML = '<div class="alert alert-success">' + text_yes + '</div>';
+        } else {
+          document.getElementById("text-info").innerHTML = '<div class="alert alert-danger">' + text_no + '</div>';
         }
       });
     });

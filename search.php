@@ -10,7 +10,7 @@ if (isset($_POST['search'])) {
   $hasil = mysqli_query($conn, "SELECT * FROM sepatu WHERE nama_sepatu LIKE '%{$sepatu}%'");
 }
 while ($value = mysqli_fetch_assoc($hasil)) { ?>
-  <div class="col-md-3 me-2 my-1 bg-light rounded shadow details col-5" data-id="<?php echo $value['id_sepatu']; ?>" data-bs-toggle="modal" data-bs-target="#modalDetail">
+  <div class="col-md-3 me-2 my-1 bg-light rounded shadow details" data-id="<?php echo $value['id_sepatu']; ?>" data-bs-toggle="modal" data-bs-target="#modalDetail">
     <img src="shoesimg/<?php echo $value['gambar'] ?>" width="100%" height="300px" class="my-3 rounded shadow d-inline-block mx-auto">
     <h6 class="fw-bold"><?php echo $value['nama_sepatu'] ?></h6>
     <h6><?php echo $value['warna'] ?></h6>
